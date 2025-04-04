@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de contatos</title>
+    <style>
+        body{
+            
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center; 
+        }
+
+        .container{
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0,0.1);
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            width: 95%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        ul{
+            list-style-type:none;
+        }
+
+        li{
+            background-color: #efefef;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container">
+        <h2>Lista de contatos</h2>
+        <input type="text" id="nome" placeholder="Nome">
+        <input type="text" id="telefone" placeholder="Telefone">
+        <button onclick=adicionarcontato()>Adicionar contato</button>
+        <ul id="lista-contatos"></ul>
+    </div>
+</body>
+<script>
+        function adicionarcontato(){
+            let nome = document.getElementById('nome').value;
+            let telefone = document.getElementById('telefone').value;
+
+            if(nome === '' || telefone === '') {
+                alert('Por favor, preencha todos os campos')
+                return;
+            }//else{
+             //   alert('Contato adicionado: `${nome}`')
+            //}
+
+            let lista = document.getElementById('lista-contatos')
+            let li = document.createElement('li');
+            li.innerHTML = `${nome} - ${telefone}`;
+            lista.appendChild(li);
+
+            const quantidade = document.querySelectorAll('li').length;
+
+            alert(`contato adicionado com sucesso: ${nome} - ${telefone}`)
+            document.getElementById('nome').value = '';
+            document.getElementById('telefone').value = '';
+
+        } 
+</script>
+</html>
